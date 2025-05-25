@@ -18,14 +18,16 @@ onMounted(() => {
 
     });
 
+
 });
 
 onUnmounted(() => {
 
-    // if (game.value) {
-    //     game.value.destroy(true);
-    //     game.value = null;
-    // }
+    if (game.value) {
+        game.value.scene.scenes[1].status = 'ended';
+        game.value.destroy();
+        game.value = null;
+    }
 
 });
 

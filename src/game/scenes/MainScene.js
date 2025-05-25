@@ -14,7 +14,8 @@ export default class MainScene extends Scene {
             return monsters[Math.floor(Math.random() * monsters.length)];
         }
 
-        let firstClick = true;
+        this.status = 'playging';
+
         this.cameras.main.setBackgroundColor('#298484');
         this.sound.add('hit');
         this.sound.add('death');
@@ -24,7 +25,6 @@ export default class MainScene extends Scene {
             loop: true,
             volume: 0.1
         }).play();
-
 
         this.anims.create({
             key: 'champiFly',
@@ -38,9 +38,6 @@ export default class MainScene extends Scene {
             frameRate: 10,
             repeat: 0
         });
-
-        console.log(this.anims);
-
 
         this.anims.create({
             key: 'champiDie',
@@ -66,10 +63,15 @@ export default class MainScene extends Scene {
             frameRate: 10,
             repeat: 0
         });
+
+
         function spawnMonster() {
             const newMonster = new Monster(this, window.innerWidth / 2, window.innerHeight / 2, getRandomMonster(), 1);
             this.add.existing(newMonster);
             newMonster.on('destroy', () => {
+                if (this.status !== 'playing') {
+                    return;
+                }
                 console.log('Monster killed');
                 EventBus.emit('monsterKilled', newMonster.value);
                 spawnMonster.call(this);
