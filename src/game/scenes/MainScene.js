@@ -75,7 +75,7 @@ export default class MainScene extends Scene {
     });
     this.anims.create({
       key: 'batFly',
-      frames: this.anims.generateFrameNumbers('Bat', {start: 0, end: 8}),
+      frames: this.anims.generateFrameNumbers('bat', {start: 0, end: 8}),
       frameRate: 10,
       repeat: -1
     });

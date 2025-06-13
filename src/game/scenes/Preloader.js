@@ -41,7 +41,7 @@ export class Preloader extends Scene {
       frameHeight: 64,
     });
 
-    this.load.spritesheet('Bat', 'Monsters/bat/Bat-IdleFly.png', {
+    this.load.spritesheet('bat', 'Monsters/bat/Bat-IdleFly.png', {
       frameWidth: 64,
       frameHeight: 64,
     });
