@@ -81,8 +81,8 @@ defineExpose({game});
            src="@/assets/UI/RavenUiPack/64/Coin.png" alt="">
       <span class="text-4xl lg:text-[5vw] xl:text-[2vw] text-gray-300">{{ golds }}</span>
     </div>
-    <button @click="levelUp(50)"
-            class="absolute flex flex-col justify-around min-w-[70%] lg:min-w-[30%] xl:min-w-[20%] items-center bottom-5 left-[50%] translate-x-[-50%] lg:left-5 lg:translate-x-0 bg-amber-300 rounded-lg p-2 shadow-md shadow-amber-200 active:scale-95 transition-transform duration-100 ease">
+    <article @click="levelUp(50)"
+             class="absolute flex flex-col justify-around min-w-[70%] lg:min-w-[30%] xl:min-w-[20%] items-center bottom-5 left-[50%] translate-x-[-50%] lg:left-5 lg:translate-x-0 bg-amber-300 rounded-lg p-2 shadow-md active:scale-95 transition-transform duration-100 ease">
       <div class="flex justify-around items-center"><img
         class="w-[30px] h-[30px] lg:w-[50px] lg:h-[50px]"
         src="@/assets/UI/RavenUiPack/64/Coin.png"
@@ -94,6 +94,6 @@ defineExpose({game});
              src="@/assets/UI/RavenUiPack/64/SwordWood.png" alt=""><span
         class="text-base lg:text-[2vw] xl:text-[1.2vw] text-gray-800">level Up </span>
       </div>
-    </button>
+    </article>
   </div>
 </template>
