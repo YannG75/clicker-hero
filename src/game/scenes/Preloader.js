@@ -9,17 +9,28 @@ export class Preloader extends Scene {
     //  We loaded this image in our Boot Scene, so we can display it here
 
 
-    //  A simple progress bar. This is the outline of the bar.
-    this.add.rectangle(window.innerWidth / 2, window.innerHeight / 2, 468, 32).setStrokeStyle(1, 0xffffff);
+// Calculer les dimensions basées sur la taille de l'écran
+    const barWidth = Math.min(360, window.innerWidth * 0.8);
+    const barHeight = 24;
+    const barX = window.innerWidth / 2;
+    const barY = window.innerHeight / 2;
 
-    //  This is the progress bar itself. It will increase in size from the left based on the % of progress.
-    const bar = this.add.rectangle((window.innerWidth / 2) - 230, (window.innerHeight / 2), 4, 28, 0xffffff);
+// Contour de la barre de progression
+    this.add.rectangle(barX, barY, barWidth, barHeight).setStrokeStyle(1, 0xffffff);
 
+
+// La barre de progression elle-même. Elle s'agrandira de gauche à droite selon le % de progression.
+    const bar = this.add.rectangle(barX - (barWidth / 2) + 2, barY, 4, barHeight, 0xffffff);
+    const percent = this.add.text(barX, barY - 10, 0 + '%', {
+      color: '#000',
+      fontSize: '20px',
+    })
     //  Use the 'progress' event emitted by the LoaderPlugin to update the loading bar
     this.load.on('progress', (progress) => {
 
       //  Update the progress bar (our bar is 464px wide, so 100% = 464px)
-      bar.width = 4 + (460 * progress);
+      bar.width = 4 + (barWidth * progress);
+      percent.setText(Math.floor(progress * 100) + '%');
 
     });
   }
